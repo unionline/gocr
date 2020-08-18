@@ -1,0 +1,123 @@
+<html xml:lang="en" lang="en" dir="ltr"
+      class="device-nonmobile tone-light top-bar-white unsafe-blur-off js js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers no-applicationcache svg inlinesvg smil svgclippaths chrome chrome76 windows desktop"
+      prefix="og: http://ogp.me/ns#">
+<meta charset="utf-8">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="description" content="ocr">
+<link rel="shortcut icon" href="/favicon.ico">
+<title>传图识字</title>
+
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.7.1/clipboard.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="static/3part/layui/css/layui.css">
+<link rel="stylesheet" type="text/css" href="static/css/index.css">
+<script src="static/3part/layui/layui.js"></script>
+<script src="static/js/ipinfo.js"></script>
+<script src="static/js/index.js"></script>
+<script src="static/js/upload.js"></script>
+
+</head>
+
+<body ondragstart="return false">
+<div id="nav">
+    <ul class="layui-nav layui-bg-green" lay-filter="nav">
+        <li class="layui-nav-item layui-this"><a onclick="nav1()">印刷文字识别</a></li>
+        <li class="layui-nav-item"><a onclick="nav2()">手写文字识别</a></li>
+        <li class="layui-nav-item"><a href="#">帮助</a>
+            <dl class="layui-nav-child">
+                <dd><a onclick="nav_note()">操作说明</a></dd>
+                <dd><a onclick="nav_dev()">开发日志</a></dd>
+                <dd><a onclick="nav_about()">关于</a></dd>
+            </dl>
+        </li>
+        </li>
+    </ul>
+</div>
+
+<!--文字识别-->
+<div id="content" sytle="height:100%">
+    <fieldset class="layui-elem-field layui-field-title" >
+        <!--手写字体识别-->
+        <legend>印刷文字识别</legend>
+    </fieldset>
+    <div class="layui-tab" lay-filter="tab">
+        <ul class="layui-tab-title">
+            <li class="layui-this" lay-id="11">单图识别</li>
+            <li lay-id="22">多张图识别</li>
+            <li lay-id="33">网络图片链接识别</li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <div>
+                    <div class="layui-upload-drag" id="drag_upload">
+                        <i id="upload_icon" class="layui-icon"></i>
+                        <div id="img_box"><img class="layui-upload-img" id="preview"></div>
+                        <p id="message" class="drag_message">点击上传，或将文件拖拽到此处</p>
+                    </div>
+                    <p id="demoText"><a class="layui-btn layui-btn-normal demo-reload"
+                                        style="float:left;margin-right: 15px" id="submit">开始识别</a>
+                    </p>
+                    <button id="reset_upload_image" type="button" class="layui-btn layui-btn-warm">重置</button>
+                </div>
+            </div>
+            <div class="layui-tab-item">
+                <div class="layui-upload">
+                    <button type="button" class="layui-btn" id="upload_images">多图片上传</button>
+                    <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+                        预览图：
+                        <div class="layui-upload-list" id="preview_images"></div>
+                    </blockquote>
+                </div>
+                <div>
+                    <button id="start_ocr_imgs" type="button" class="layui-btn layui-btn-normal">开始识别</button>
+                    <button id="reset_upload_images" type="button" class="layui-btn layui-btn-warm">重置</button>
+                </div>
+
+            </div>
+            <div class="layui-tab-item">
+                <div>
+                    <form class="layui-form" action="">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">图片地址</label>
+                            <div class="layui-input-block">
+                                <input id="img_url" type="text" name="title" lay-verify="title" autocomplete="off"
+                                       placeholder="请输入图片链接地址" class="layui-input">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div>
+                    <button id="start_ocr_img_url" type="button" class="layui-btn layui-btn-normal">开始识别</button>
+                    <button id="reset_ocr_img_url" type="button" class="layui-btn layui-btn-warm">重置</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--识别结果-->
+<div>
+    <div>
+        <button id="result_clear" type="button" class="layui-btn layui-btn-danger">清空结果</button>
+        <input id="result_join" class="layui-btn layui-btn-success" type="button" flag=0 value="去除换行">
+        <input id="result_copy" class="layui-btn layui-btn-success" type="button" value="复制">
+    </div>
+    <textarea id="result" placeholder="" class="layui-textarea"></textarea>
+</div>
+</div>
+
+<div class="layui-footer">
+    <!-- 底部固定区域 -->
+    <p style="text-align: center">CopyRight © 2020 联合在线 unionline.top All Rights Reserved.</p>
+</div>
+
+</body>
+</html>

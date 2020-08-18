@@ -1,0 +1,20 @@
+app_name = "go-ocr"
+version = "0.1"
+port = 9921
+gin_mode = "debug"
+
+[mysql]
+addr = "localhost:3306"
+username = "dev"
+password = "123456"
+db_name = "gocr"
+db_prefix = "dev_"
+
+[path]
+project_path = "/home/fanbi/go/src/project/gocr/"
+project_path_win = "D:/Go-Work/src/project/GoProject/gocr/"
+server_address = "https://unionline.top:9933"
+images_upload_dir = "./views/resource/upload/images/"
+path_token_file = "./config/tokenInfo.txt"
+path_server_crt = "E:/work/learn/gitea/ssl/unionline.top/nginx/server.crt"
+path_server_key = "E:/work/learn/gitea/ssl/unionline.top/nginx/server.key"
